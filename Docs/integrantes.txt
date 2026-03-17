@@ -1,0 +1,8 @@
+Integrantes del grupo:
+- [Nombre Estudiante 1] - Código: XXXXXXXX
+- [Nombre Estudiante 2] - Código: XXXXXXXX
+
+Asignatura: Programación Avanzada
+Taller No. 3 - Concurrencia: El Combate de Sumo
+Universidad Distrital Francisco José de Caldas
+Ingeniería de Sistemas
