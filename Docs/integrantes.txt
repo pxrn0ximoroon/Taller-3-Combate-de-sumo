@@ -1,6 +1,7 @@
 Integrantes del grupo:
-- [Nombre Estudiante 1] - Código: XXXXXXXX
-- [Nombre Estudiante 2] - Código: XXXXXXXX
+-Andres Espinosa - 20242020114
+-Miguel David Tarazona Correa - 20251020113
+-Julian Andres Salazar Belilla - 20251020131
 
 Asignatura: Programación Avanzada
 Taller No. 3 - Concurrencia: El Combate de Sumo
