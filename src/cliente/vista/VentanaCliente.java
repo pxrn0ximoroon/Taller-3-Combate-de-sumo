@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -363,4 +364,39 @@ public class VentanaCliente extends JFrame {
     public void setBtnCombatirHabilitado(boolean habilitado) {
         btnCombatir.setEnabled(habilitado);
     }
+    
+    /**
+     * Muestra un cuadro de diálogo de advertencia al usuario.
+     * Se utiliza para notificar situaciones no críticas, como archivos vacíos 
+     * o búsquedas sin resultados
+     * * @param mensaje El cuerpo del mensaje que explica la advertencia.
+     * @param titulo  El texto que aparecerá en la barra de título de la ventana.
+     */
+    public void mostrarMensaje(String mensaje, String titulo) {
+        JOptionPane.showMessageDialog(this, 
+            mensaje, 
+            titulo, 
+            JOptionPane.WARNING_MESSAGE);
+    }
+    /**
+     * Abre un selector de archivos filtrado para ficheros .properties.
+     * @return El archivo seleccionado o null si el usuario cancela.
+     */
+    public File seleccionarArchivoProperties() {
+        JFileChooser chooser = new JFileChooser("./data");
+        chooser.setDialogTitle("Seleccionar archivo de kimarites (.properties)");
+
+        // Filtro para que solo se vean archivos .properties
+        javax.swing.filechooser.FileNameExtensionFilter filtro = 
+            new javax.swing.filechooser.FileNameExtensionFilter(
+                "Archivos de propiedades (*.properties)", "properties"
+            );
+        chooser.setFileFilter(filtro);
+
+        if (chooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            return chooser.getSelectedFile();
+        }
+        return null;
+    }
+
 }

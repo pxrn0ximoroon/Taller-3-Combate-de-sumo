@@ -65,46 +65,55 @@ public class ControladorCliente {
     // ── Lógica de acciones ────────────────────────────────────────────────────
 
     /**
-     * Abre JFileChooser para seleccionar el .properties y carga kimarites.
+     * Permite al usuario seleccionar un archivo .properties y cargar los kimarites.
+     *
+     * <p>Flujo:</p>
+     * <ul>
+     *   <li>Abre un selector de archivos.</li>
+     *   <li>Si se selecciona un archivo, guarda la ruta y actualiza la vista.</li>
+     *   <li>Lee los kimarites desde el archivo.</li>
+     *   <li>Si no hay datos, muestra un mensaje de error.</li>
+     *   <li>Si hay datos, los carga en la interfaz.</li>
+     * </ul>
      */
     private void accionCargarProperties() {
-        JFileChooser chooser = new JFileChooser("./data");
-        chooser.setDialogTitle("Seleccionar archivo de kimarites (.properties)");
-        chooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter(
-            "Archivos de propiedades (*.properties)", "properties"
-        ));
+        // 1. Delegamos la parte visual a la vista
+        File archivo = vista.seleccionarArchivoProperties();
 
-        if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            rutaProperties = chooser.getSelectedFile().getAbsolutePath();
-            vista.setArchivoProperties(chooser.getSelectedFile().getName());
+        if (archivo != null) {
+            // 2. Actualizamos datos en la vista y guardamos ruta
+            this.rutaProperties = archivo.getAbsolutePath();
+            vista.setArchivoProperties(archivo.getName());
 
+            // 3. Pedimos al modelo que procese los datos
             List<Kimarite> kimarites = LectorKimarites.cargarDesdeProperties(rutaProperties);
-            if (kimarites.isEmpty()) {
 
-                JOptionPane.showMessageDialog(null,
-                    "No se encontraron kimarites en el archivo.",
-                    "Archivo inválido", JOptionPane.WARNING_MESSAGE);
+            // 4. Mostramos resultado
+            if (kimarites.isEmpty()) {
+                vista.mostrarMensaje(
+                    "No se encontraron kimarites en el archivo.", 
+                    "Archivo inválido"
+                );
             } else {
                 vista.cargarKimaritesEnLista(kimarites);
                 vista.setEstado(kimarites.size() + " técnicas cargadas. Selecciona las que domina tu rikishi.");
             }
         }
     }
-
     /**
      * Valida datos, construye el Rikishi y lo envía al servidor en hilo separado.
      */
     private void accionCombatir() {
         String nombre = vista.getNombreLuchador();
         if (nombre.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Ingresa el nombre del luchador.",
-                "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            vista.mostrarMensaje( "Ingresa el nombre del luchador.",
+                "Datos incompletos");
             return;
         }
         List<Kimarite> tecnicas = vista.getKimaritesSeleccionados();
         if (tecnicas.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Selecciona al menos una técnica.",
-                "Datos incompletos", JOptionPane.WARNING_MESSAGE);
+            vista.mostrarMensaje( "Selecciona al menos una técnica.",
+                "Datos incompletos");
             return;
         }
 
@@ -162,10 +171,10 @@ public class ControladorCliente {
 
         } catch (IOException | ClassNotFoundException e) {
             SwingUtilities.invokeLater(() -> {
-                JOptionPane.showMessageDialog(null,
+                vista.mostrarMensaje(
                     "Error de conexión con el servidor:\n" + e.getMessage()
                     + "\n\nVerifica que el servidor esté activo en el puerto " + Protocolo.PUERTO,
-                    "Error de red", JOptionPane.ERROR_MESSAGE);
+                    "Error de red");
                 vista.setBtnCombatirHabilitado(true);
                 vista.setEstado("Error al conectar. Verifica el servidor.");
             });
