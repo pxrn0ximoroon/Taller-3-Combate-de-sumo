@@ -13,7 +13,7 @@
 ## 3. Historial de Cambios
 
 ### Commit inicial
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: main
 - **Acción**: Push
 - **Descripción**: Se definieron los estándares de paquetes   
@@ -23,7 +23,7 @@
 - **Commit **: Se reescribe el archivo propierties.
 
 ### Commit 2
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: master
 - **Acción**: Push
 - Descripción: 
@@ -33,14 +33,14 @@
   - Los datos de las técnicas pasan de objetos `Kimarite` a representarse como `String`, en vista del cambio del objetio kimarites .
 
 ### Commit 3
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: master
 - **Acción**: push
 - **Descripción**: 
 -  Se cambia kimarite y raikishi en modeloSErvidor.
 
 ### Commit 4
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: master
 - **Acción**: Actualización
 - **Descripción**:  
@@ -52,7 +52,7 @@
 
 
 ### Commit 5
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: master
 - **Acción**: Implementación
 - **Descripción**:  
@@ -63,7 +63,7 @@
 
 
 ### Commit 6
-- **Autor**: JUl?
+- **Autor**: Julian
 - **Rama**: fork
 - **Acción**: pull
 - **Descripción**: 
@@ -71,7 +71,7 @@
 
 
 ### Commit 7
-- **Autor**: Ziheaus
+- **Autor**: Ziheaus, Julian
 - **Rama**: master
 - **Acción**: Implementación
 - **Descripción**:  
