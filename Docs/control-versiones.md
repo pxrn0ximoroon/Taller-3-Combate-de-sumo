@@ -23,7 +23,7 @@
 - **Commit **: Se reescribe el archivo propierties.
 
 ### Commit 2
-- **Autor**: Ziheaus, Julian
+- **Autor**: Ziheaus, Julian, Andres
 - **Rama**: master
 - **Acción**: Push
 - Descripción: 
@@ -33,7 +33,7 @@
   - Los datos de las técnicas pasan de objetos `Kimarite` a representarse como `String`, en vista del cambio del objetio kimarites .
 
 ### Commit 3
-- **Autor**: Ziheaus, Julian
+- **Autor**: Ziheaus, Julian, Andres
 - **Rama**: master
 - **Acción**: push
 - **Descripción**: 
@@ -63,7 +63,7 @@
 
 
 ### Commit 6
-- **Autor**: Julian
+- **Autor**: Julian, Andres
 - **Rama**: fork
 - **Acción**: pull
 - **Descripción**: 
